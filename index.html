@@ -1,0 +1,1575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChineseGo — Essential Chinese for Your China Trip</title>
+    <meta name="description" content="450 essential Chinese phrases that work 100% offline. Perfect for travelers to China. No internet needed. Download once, use everywhere.">
+    <meta name="keywords" content="Chinese travel phrases, learn Chinese, China travel app, offline Chinese, travel Chinese app">
+    <meta property="og:title" content="ChineseGo — Essential Chinese for Your China Trip">
+    <meta property="og:description" content="450 essential Chinese phrases that work 100% offline. Perfect for travelers to China.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://chinesego.app">
+    <meta property="og:image" content="https://chinesego.app/assets/images/logo_1024.png">
+    <link rel="icon" type="image/png" href="assets/images/logo_1024.png">
+    <link rel="apple-touch-icon" href="assets/images/logo_1024.png">
+    <link rel="canonical" href="https://chinesego.app">
+    <style>
+        :root {
+            --red: #FF453A;
+            --red-dark: #E0342A;
+            --amber: #FF9F0A;
+            --amber-dark: #E08E00;
+            --bg-dark: #0A0A0A;
+            --bg-card: #141414;
+            --bg-card-hover: #1A1A1A;
+            --text-primary: #FFFFFF;
+            --text-secondary: #A0A0A0;
+            --text-muted: #666666;
+            --border: #222222;
+            --gradient-red: linear-gradient(135deg, #FF453A, #FF375F);
+            --gradient-amber: linear-gradient(135deg, #FF9F0A, #FFD700);
+            --gradient-hero: linear-gradient(180deg, #0A0A0A 0%, #1A0A0A 50%, #0A0A0A 100%);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 16px 24px;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .nav-logo img {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+        }
+
+        .nav-logo span {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-cta {
+            background: var(--gradient-red);
+            color: white !important;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 600 !important;
+            transition: transform 0.2s, box-shadow 0.2s !important;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 20px rgba(255, 69, 58, 0.4);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 24px;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 24px 80px;
+            background: var(--gradient-hero);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 40%, rgba(255, 69, 58, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 60%, rgba(255, 159, 10, 0.05) 0%, transparent 50%);
+            animation: heroGlow 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes heroGlow {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-5%, -5%); }
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text {
+            max-width: 560px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 69, 58, 0.1);
+            border: 1px solid rgba(255, 69, 58, 0.2);
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--red);
+            margin-bottom: 24px;
+        }
+
+        .hero-badge .dot {
+            width: 6px;
+            height: 6px;
+            background: var(--red);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        .hero h1 {
+            font-size: clamp(40px, 5vw, 64px);
+            font-weight: 800;
+            line-height: 1.08;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 .highlight {
+            background: var(--gradient-red);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 40px;
+            max-width: 480px;
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .app-store-badge {
+            transition: transform 0.2s, opacity 0.2s;
+        }
+
+        .app-store-badge:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        .app-store-badge img {
+            height: 52px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 32px;
+            margin-top: 48px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+        }
+
+        .hero-stat .number {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-stat .label {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .phone-mockup {
+            width: 280px;
+            height: 580px;
+            background: var(--bg-card);
+            border-radius: 40px;
+            border: 2px solid var(--border);
+            overflow: hidden;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05) inset;
+            position: relative;
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            padding: 50px 16px 20px;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(180deg, #0A0A0A, #111111);
+        }
+
+        .phone-notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 28px;
+            background: #000;
+            border-radius: 0 0 16px 16px;
+            z-index: 2;
+        }
+
+        .phone-header {
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .phone-header h3 {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .phone-progress {
+            background: rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 12px;
+            margin-bottom: 12px;
+        }
+
+        .phone-progress .bar {
+            height: 4px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 2px;
+            overflow: hidden;
+            margin-top: 8px;
+        }
+
+        .phone-progress .bar-fill {
+            height: 100%;
+            width: 35%;
+            background: var(--gradient-red);
+            border-radius: 2px;
+        }
+
+        .phone-progress .bar-text {
+            font-size: 11px;
+            color: var(--text-secondary);
+        }
+
+        .phone-categories {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            flex: 1;
+        }
+
+        .phone-cat {
+            background: rgba(255,255,255,0.06);
+            border-radius: 12px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .phone-cat .icon {
+            font-size: 24px;
+        }
+
+        .phone-bottom-bar {
+            display: flex;
+            justify-content: space-around;
+            padding: 8px 0 0;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            margin-top: 12px;
+        }
+
+        .phone-bottom-bar span {
+            font-size: 10px;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        .phone-bottom-bar span.active {
+            color: var(--red);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 100px 24px;
+        }
+
+        .section-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--red);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.15;
+            margin-bottom: 16px;
+        }
+
+        .section-desc {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            line-height: 1.7;
+        }
+
+        /* Features Grid */
+        .features {
+            background: linear-gradient(180deg, var(--bg-dark), #0D0D0D);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 60px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 32px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            background: var(--bg-card-hover);
+            border-color: rgba(255,255,255,0.1);
+            transform: translateY(-4px);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: -0.01em;
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Offline Highlight */
+        .offline-section {
+            background: linear-gradient(180deg, #0D0D0D, #0A0808);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .offline-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center, rgba(255, 69, 58, 0.04) 0%, transparent 70%);
+        }
+
+        .offline-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .offline-visual {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .offline-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .offline-card .icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: rgba(52, 199, 89, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .offline-card .text h4 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .offline-card .text p {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .offline-text .section-title .em {
+            background: linear-gradient(135deg, #34C759, #30D158);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .offline-text .benefits {
+            list-style: none;
+            margin-top: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .offline-text .benefits li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 15px;
+            color: var(--text-secondary);
+        }
+
+        .offline-text .benefits .check {
+            width: 22px;
+            height: 22px;
+            background: rgba(52, 199, 89, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: #34C759;
+            flex-shrink: 0;
+        }
+
+        /* Categories */
+        .categories {
+            background: linear-gradient(180deg, #0A0808, #0A0A0A);
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+            margin-top: 60px;
+        }
+
+        .category-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .category-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 69, 58, 0.3);
+            box-shadow: 0 8px 32px rgba(255, 69, 58, 0.1);
+        }
+
+        .category-card .emoji {
+            font-size: 36px;
+            margin-bottom: 12px;
+        }
+
+        .category-card h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .category-card p {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* Languages */
+        .languages {
+            background: var(--bg-dark);
+        }
+
+        .languages-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 48px;
+        }
+
+        .lang-chip {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+
+        .lang-chip:hover {
+            border-color: rgba(255,255,255,0.15);
+            background: var(--bg-card-hover);
+        }
+
+        /* Pricing */
+        .pricing {
+            background: linear-gradient(180deg, var(--bg-dark), #0D0808);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-top: 60px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .pricing-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 36px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255,255,255,0.1);
+        }
+
+        .pricing-card.featured {
+            border-color: rgba(255, 69, 58, 0.3);
+            box-shadow: 0 0 60px rgba(255, 69, 58, 0.08);
+        }
+
+        .pricing-card .badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gradient-red);
+            color: white;
+            padding: 4px 16px;
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .pricing-card .icon-wrap {
+            width: 52px;
+            height: 52px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .pricing-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .pricing-card .price {
+            font-size: 36px;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 4px;
+        }
+
+        .pricing-card .price-sub {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+
+        .pricing-card .feature-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .pricing-card .feature-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .pricing-card .feature-list .check {
+            color: #34C759;
+            font-size: 16px;
+        }
+
+        .pricing-btn {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 14px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .pricing-btn.primary {
+            background: var(--gradient-red);
+            color: white;
+        }
+
+        .pricing-btn.primary:hover {
+            box-shadow: 0 4px 24px rgba(255, 69, 58, 0.4);
+            transform: translateY(-1px);
+        }
+
+        .pricing-btn.secondary {
+            background: rgba(255,255,255,0.08);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+
+        .pricing-btn.secondary:hover {
+            background: rgba(255,255,255,0.12);
+        }
+
+        /* FAQ */
+        .faq {
+            background: linear-gradient(180deg, #0D0808, var(--bg-dark));
+        }
+
+        .faq-list {
+            max-width: 720px;
+            margin: 60px auto 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: border-color 0.2s;
+        }
+
+        .faq-item.open {
+            border-color: rgba(255,255,255,0.1);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 20px 24px;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 16px;
+            font-weight: 600;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .faq-question .arrow {
+            font-size: 14px;
+            color: var(--text-muted);
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .faq-item.open .faq-question .arrow {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-answer-inner {
+            padding: 0 24px 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 120px 24px;
+            text-align: center;
+            background: radial-gradient(ellipse at center, rgba(255, 69, 58, 0.06) 0%, var(--bg-dark) 70%);
+        }
+
+        .cta-section h2 {
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 48px 24px;
+            background: var(--bg-dark);
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-top: 12px;
+            max-width: 280px;
+            line-height: 1.6;
+        }
+
+        .footer-col h4 {
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .footer-col a {
+            display: block;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            margin-bottom: 10px;
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover {
+            color: var(--text-primary);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 32px auto 0;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-bottom-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-bottom-links a:hover {
+            color: var(--text-secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 60px;
+                text-align: center;
+            }
+
+            .hero-text {
+                max-width: 100%;
+            }
+
+            .hero-subtitle {
+                max-width: 100%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-actions {
+                justify-content: center;
+            }
+
+            .hero-stats {
+                justify-content: center;
+            }
+
+            .hero-visual {
+                order: -1;
+            }
+
+            .phone-mockup {
+                width: 240px;
+                height: 500px;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .offline-inner {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .categories-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .footer-inner {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 80px 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-links.open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(10, 10, 10, 0.95);
+                backdrop-filter: blur(20px);
+                padding: 20px 24px;
+                border-bottom: 1px solid var(--border);
+                gap: 16px;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-stats {
+                gap: 24px;
+            }
+
+            .footer-inner {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 100px 16px 60px;
+            }
+
+            .categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            .phone-mockup {
+                width: 200px;
+                height: 420px;
+            }
+
+            .phone-categories {
+                gap: 6px;
+            }
+
+            .phone-cat {
+                padding: 8px;
+                font-size: 10px;
+            }
+        }
+
+        /* Scroll Animations */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav id="navbar">
+    <div class="nav-inner">
+        <a href="#" class="nav-logo">
+            <img src="assets/images/logo_1024.png" alt="ChineseGo">
+            <span>ChineseGo</span>
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#categories">Categories</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#download" class="nav-cta">Download</a></li>
+        </ul>
+        <button class="mobile-menu-btn" id="menuBtn" aria-label="Toggle menu">☰</button>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="hero">
+    <div class="hero-content">
+        <div class="hero-text">
+            <div class="hero-badge">
+                <span class="dot"></span>
+                Available on iOS
+            </div>
+            <h1>
+                Speak Chinese<br>
+                <span class="highlight">Anywhere in China</span>
+            </h1>
+            <p class="hero-subtitle">
+                450 essential travel phrases with native pronunciation. 
+                Works 100% offline — no internet, no VPN, no problem.
+            </p>
+            <div class="hero-actions">
+                <a href="https://apps.apple.com/us/app/chinesego-travel-chinese/id6758551531" class="app-store-badge" target="_blank" rel="noopener">
+                    <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="number">450+</div>
+                    <div class="label">Travel phrases</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="number">11</div>
+                    <div class="label">Languages</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="number">100%</div>
+                    <div class="label">Offline</div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="phone-mockup">
+                <div class="phone-notch"></div>
+                <div class="phone-screen">
+                    <div class="phone-header">
+                        <h3>ChineseGo</h3>
+                    </div>
+                    <div class="phone-progress">
+                        <div class="bar-text">Level 3 · 105/450 phrases</div>
+                        <div class="bar"><div class="bar-fill"></div></div>
+                    </div>
+                    <div class="phone-categories">
+                        <div class="phone-cat"><span class="icon">👋</span>Basics</div>
+                        <div class="phone-cat"><span class="icon">✈️</span>Arrival</div>
+                        <div class="phone-cat"><span class="icon">🏨</span>Hotel</div>
+                        <div class="phone-cat"><span class="icon">📱</span>Digital</div>
+                        <div class="phone-cat"><span class="icon">🗺️</span>Sightseeing</div>
+                        <div class="phone-cat"><span class="icon">🍜</span>Dining</div>
+                        <div class="phone-cat"><span class="icon">🛍️</span>Shopping</div>
+                        <div class="phone-cat"><span class="icon">🏥</span>Health</div>
+                    </div>
+                    <div class="phone-bottom-bar">
+                        <span class="active">Study</span>
+                        <span>Search</span>
+                        <span>Saved</span>
+                        <span>Settings</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features -->
+<section class="features" id="features">
+    <div class="section-inner">
+        <div class="fade-up">
+            <span class="section-label">Features</span>
+            <h2 class="section-title">Everything you need<br>for your China trip</h2>
+            <p class="section-desc">From the airport to restaurants, from shopping to emergencies — we've got you covered with carefully curated phrases.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card fade-up">
+                <div class="feature-icon" style="background: rgba(255, 69, 58, 0.12);">📴</div>
+                <h3>100% Offline</h3>
+                <p>All phrases and audio files stored locally. No internet required. Download once, use anywhere in China.</p>
+            </div>
+            <div class="feature-card fade-up">
+                <div class="feature-icon" style="background: rgba(52, 199, 89, 0.12);">🔊</div>
+                <h3>Native Pronunciation</h3>
+                <p>Every phrase comes with professional audio. Just tap play and let your phone speak Chinese for you.</p>
+            </div>
+            <div class="feature-card fade-up">
+                <div class="feature-icon" style="background: rgba(0, 122, 255, 0.12);">🌏</div>
+                <h3>11 Languages</h3>
+                <p>Translations in English, Thai, Korean, Japanese, Spanish, French, Russian, Arabic, Indonesian, Vietnamese & more.</p>
+            </div>
+            <div class="feature-card fade-up">
+                <div class="feature-icon" style="background: rgba(255, 159, 10, 0.12);">🔍</div>
+                <h3>Instant Search</h3>
+                <p>Find exactly what you need in seconds. Search by Chinese, Pinyin, or your own language — works offline too.</p>
+            </div>
+            <div class="feature-card fade-up">
+                <div class="feature-icon" style="background: rgba(175, 82, 222, 0.12);">📊</div>
+                <h3>Progress Tracking</h3>
+                <p>Track your learning with levels, daily goals, and streak counting. Stay motivated throughout your trip preparation.</p>
+            </div>
+            <div class="feature-card fade-up">
+                <div class="feature-icon" style="background: rgba(255, 45, 85, 0.12);">⭐</div>
+                <h3>Smart Favorites</h3>
+                <p>Save your most-needed phrases for quick access. Build your personal phrasebook for every situation.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Offline Highlight -->
+<section class="offline-section" id="offline">
+    <div class="offline-inner">
+        <div class="offline-visual fade-up">
+            <div class="offline-card">
+                <div class="icon">✅</div>
+                <div class="text">
+                    <h4>450 Phrases</h4>
+                    <p>Stored locally on your device</p>
+                </div>
+            </div>
+            <div class="offline-card">
+                <div class="icon">✅</div>
+                <div class="text">
+                    <h4>Audio Files</h4>
+                    <p>Native pronunciation included</p>
+                </div>
+            </div>
+            <div class="offline-card">
+                <div class="icon">✅</div>
+                <div class="text">
+                    <h4>Search & Favorites</h4>
+                    <p>Full functionality without internet</p>
+                </div>
+            </div>
+            <div class="offline-card">
+                <div class="icon">✅</div>
+                <div class="text">
+                    <h4>Learning Progress</h4>
+                    <p>All data saved on your device</p>
+                </div>
+            </div>
+        </div>
+        <div class="offline-text fade-up">
+            <span class="section-label">Why Offline Matters</span>
+            <h2 class="section-title">No internet?<br><span class="em">No problem.</span></h2>
+            <p class="section-desc">Most travelers in China face limited internet access. No roaming, no VPN, no local SIM card — ChineseGo works from the moment you land.</p>
+            <ul class="benefits">
+                <li><span class="check">✓</span> No data charges or roaming fees</li>
+                <li><span class="check">✓</span> No VPN required</li>
+                <li><span class="check">✓</span> Works in airplane mode</li>
+                <li><span class="check">✓</span> Zero loading time</li>
+                <li><span class="check">✓</span> Download once, use forever</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- Categories -->
+<section class="categories" id="categories">
+    <div class="section-inner">
+        <div class="fade-up" style="text-align: center;">
+            <span class="section-label">10 Scenarios</span>
+            <h2 class="section-title">From landing to departure</h2>
+            <p class="section-desc" style="margin-left: auto; margin-right: auto;">Every phrase is organized by real travel scenarios. Find what you need, when you need it.</p>
+        </div>
+        <div class="categories-grid">
+            <div class="category-card fade-up">
+                <div class="emoji">👋</div>
+                <h4>Basics</h4>
+                <p>Greetings & essentials</p>
+            </div>
+            <div class="category-card fade-up">
+                <div class="emoji">✈️</div>
+                <h4>Arrival</h4>
+                <p>Airport & transport</p>
+            </div>
+            <div class="category-card fade-up">
+                <div class="emoji">🏨</div>
+                <h4>Accommodation</h4>
+                <p>Hotel & check-in</p>
+            </div>
+            <div class="category-card fade-up">
+                <div class="emoji">📱</div>
+                <h4>Digital Life</h4>
+                <p>Wi-Fi & payments</p>
+            </div>
+            <div class="category-card fade-up">
+                <div class="emoji">🗺️</div>
+                <h4>Sightseeing</h4>
+                <p>Navigation & tours</p>
+            </div>
+            <div class="category-card fade-up">
+                <div class="emoji">🍜</div>
+                <h4>Dining</h4>
+                <p>Restaurants & food</p>
+            </div>
+            <div class="category-card fade-up">
+                <div class="emoji">🛍️</div>
+                <h4>Shopping</h4>
+                <p>Bargaining & buying</p>
+            </div>
+            <div class="category-card fade-up">
+                <div class="emoji">🏥</div>
+                <h4>Health</h4>
+                <p>Pharmacy & hospital</p>
+            </div>
+            <div class="category-card fade-up">
+                <div class="emoji">🚨</div>
+                <h4>Emergency</h4>
+                <p>SOS & urgent help</p>
+            </div>
+            <div class="category-card fade-up">
+                <div class="emoji">🛫</div>
+                <h4>Departure</h4>
+                <p>Checkout & leaving</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Languages -->
+<section class="languages">
+    <div class="section-inner">
+        <div class="fade-up" style="text-align: center;">
+            <span class="section-label">Multi-language</span>
+            <h2 class="section-title">Your language, your way</h2>
+            <p class="section-desc" style="margin-left: auto; margin-right: auto;">All phrases translated into 11 languages. Choose your native language and start learning immediately.</p>
+        </div>
+        <div class="languages-bar fade-up">
+            <div class="lang-chip">🇬🇧 English</div>
+            <div class="lang-chip">🇹🇭 ไทย</div>
+            <div class="lang-chip">🇰🇷 한국어</div>
+            <div class="lang-chip">🇯🇵 日本語</div>
+            <div class="lang-chip">🇪🇸 Español</div>
+            <div class="lang-chip">🇫🇷 Français</div>
+            <div class="lang-chip">🇷🇺 Русский</div>
+            <div class="lang-chip">🇸🇦 العربية</div>
+            <div class="lang-chip">🇮🇩 Bahasa</div>
+            <div class="lang-chip">🇻🇳 Tiếng Việt</div>
+            <div class="lang-chip">🇹🇼 繁體中文</div>
+        </div>
+    </div>
+</section>
+
+<!-- Pricing -->
+<section class="pricing" id="pricing">
+    <div class="section-inner">
+        <div class="fade-up" style="text-align: center;">
+            <span class="section-label">Pricing</span>
+            <h2 class="section-title">Simple, honest pricing</h2>
+            <p class="section-desc" style="margin-left: auto; margin-right: auto;">One-time purchase, lifetime access. No subscriptions, no hidden fees.</p>
+        </div>
+        <div class="pricing-grid">
+            <div class="pricing-card fade-up">
+                <div class="icon-wrap" style="background: rgba(52, 199, 89, 0.12);">🆓</div>
+                <h3>Free</h3>
+                <div class="price">$0</div>
+                <div class="price-sub">Free forever</div>
+                <ul class="feature-list">
+                    <li><span class="check">✓</span> Basic travel phrases</li>
+                    <li><span class="check">✓</span> Native audio playback</li>
+                    <li><span class="check">✓</span> 11 language translations</li>
+                    <li><span class="check">✓</span> Offline access</li>
+                    <li><span class="check">✓</span> Favorites & search</li>
+                </ul>
+                <a href="https://apps.apple.com/us/app/chinesego-travel-chinese/id6758551531" class="pricing-btn secondary" target="_blank" rel="noopener">Get Started Free</a>
+            </div>
+            <div class="pricing-card featured fade-up">
+                <div class="badge">Best Value</div>
+                <div class="icon-wrap" style="background: rgba(255, 69, 58, 0.12);">👑</div>
+                <h3>Lifetime Access</h3>
+                <div class="price">$9.99</div>
+                <div class="price-sub">One-time purchase</div>
+                <ul class="feature-list">
+                    <li><span class="check">✓</span> All 450+ travel phrases</li>
+                    <li><span class="check">✓</span> All 10 scenario modules</li>
+                    <li><span class="check">✓</span> Native pronunciation audio</li>
+                    <li><span class="check">✓</span> 100% offline access</li>
+                    <li><span class="check">✓</span> All future updates included</li>
+                    <li><span class="check">✓</span> Lifetime — pay once, use forever</li>
+                </ul>
+                <a href="https://apps.apple.com/us/app/chinesego-travel-chinese/id6758551531" class="pricing-btn primary" target="_blank" rel="noopener">Unlock Full Access</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+    <div class="section-inner">
+        <div class="fade-up" style="text-align: center;">
+            <span class="section-label">FAQ</span>
+            <h2 class="section-title">Frequently asked questions</h2>
+        </div>
+        <div class="faq-list">
+            <div class="faq-item fade-up">
+                <button class="faq-question">
+                    Does ChineseGo really work offline?
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">Yes! All 450+ phrases, audio files, and translations are stored locally on your device. Once downloaded, ChineseGo works completely without internet — perfect for travelers in China who may not have reliable internet access.</div>
+                </div>
+            </div>
+            <div class="faq-item fade-up">
+                <button class="faq-question">
+                    What languages are supported?
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">ChineseGo supports 11 languages: English, Thai, Korean, Japanese, Spanish, French, Russian, Arabic, Indonesian, Vietnamese, and Traditional Chinese. All phrases include pinyin romanization and native Chinese audio.</div>
+                </div>
+            </div>
+            <div class="faq-item fade-up">
+                <button class="faq-question">
+                    Is the free version useful?
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">Absolutely! The free version includes essential travel phrases with audio, search, favorites, and full offline access. The lifetime upgrade unlocks all 450+ phrases across all 10 travel scenario modules.</div>
+                </div>
+            </div>
+            <div class="faq-item fade-up">
+                <button class="faq-question">
+                    What is the Concierge service?
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">The Concierge service connects you with a real human translator for situations where pre-recorded phrases aren't enough. Contact us via email or message for pricing and availability. This service requires an internet connection.</div>
+                </div>
+            </div>
+            <div class="faq-item fade-up">
+                <button class="faq-question">
+                    Can I get a refund?
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">In-app purchases are processed by Apple. You can request a refund through Apple's standard refund process at reportaproblem.apple.com within the applicable refund window.</div>
+                </div>
+            </div>
+            <div class="faq-item fade-up">
+                <button class="faq-question">
+                    Which devices are supported?
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">ChineseGo is available for iPhone and iPad running iOS 16.0 or later. Your purchase syncs across all your Apple devices via the App Store.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="download">
+    <div class="fade-up">
+        <h2>Ready for China?</h2>
+        <p>Download ChineseGo and start learning essential Chinese phrases today. No internet needed.</p>
+        <a href="https://apps.apple.com/us/app/chinesego-travel-chinese/id6758551531" class="app-store-badge" target="_blank" rel="noopener">
+            <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+        </a>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <a href="#" class="nav-logo" style="margin-bottom: 8px;">
+                <img src="assets/images/logo_1024.png" alt="ChineseGo">
+                <span>ChineseGo</span>
+            </a>
+            <p>Essential Chinese for your China trip. 450+ phrases that work 100% offline.</p>
+        </div>
+        <div class="footer-col">
+            <h4>Product</h4>
+            <a href="#features">Features</a>
+            <a href="#categories">Categories</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#faq">FAQ</a>
+        </div>
+        <div class="footer-col">
+            <h4>Legal</h4>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
+        </div>
+        <div class="footer-col">
+            <h4>Support</h4>
+            <a href="support.html">Help Center</a>
+            <a href="mailto:zhangyuanbo123@gmail.com">Contact Us</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <span>&copy; 2026 ChineseGo. All rights reserved.</span>
+        <div class="footer-bottom-links">
+            <a href="privacy.html">Privacy</a>
+            <a href="terms.html">Terms</a>
+            <a href="support.html">Support</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+// Navbar scroll effect
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// Mobile menu toggle
+const menuBtn = document.getElementById('menuBtn');
+const navLinks = document.getElementById('navLinks');
+menuBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    menuBtn.textContent = navLinks.classList.contains('open') ? '✕' : '☰';
+});
+
+navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        menuBtn.textContent = '☰';
+    });
+});
+
+// FAQ accordion
+document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const answer = btn.nextElementSibling;
+        const isOpen = item.classList.contains('open');
+
+        document.querySelectorAll('.faq-item').forEach(i => {
+            i.classList.remove('open');
+            i.querySelector('.faq-answer').style.maxHeight = '0';
+        });
+
+        if (!isOpen) {
+            item.classList.add('open');
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+        }
+    });
+});
+
+// Scroll-reveal animation
+const observer = new IntersectionObserver(
+    entries => entries.forEach(e => {
+        if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            observer.unobserve(e.target);
+        }
+    }),
+    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+);
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
