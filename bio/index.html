@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChineseGo Bio Links</title>
+    <meta name="description" content="One place for the most useful ChineseGo links: app download, free China arrival checklist, daily phrase, and support.">
+    <meta property="og:title" content="ChineseGo Bio Links">
+    <meta property="og:description" content="Practical travel Chinese tools and resources for foreigners visiting China.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://chinesego.app/bio/">
+    <meta property="og:image" content="https://chinesego.app/assets/images/logo_1024.png">
+    <link rel="icon" type="image/png" href="../assets/images/logo_1024.png">
+    <link rel="apple-touch-icon" href="../assets/images/logo_1024.png">
+    <link rel="canonical" href="https://chinesego.app/bio/">
+    <style>
+        :root {
+            --red: #ff453a;
+            --amber: #ff9f0a;
+            --bg-dark: #080808;
+            --bg-card: rgba(20, 20, 20, 0.88);
+            --bg-soft: rgba(255, 255, 255, 0.06);
+            --text-primary: #ffffff;
+            --text-secondary: #b6b6b6;
+            --text-muted: #7b7b7b;
+            --border: rgba(255, 255, 255, 0.08);
+            --gradient-main: linear-gradient(135deg, #ff453a 0%, #ff7a18 100%);
+            --gradient-glow: radial-gradient(circle at top, rgba(255, 69, 58, 0.2), transparent 48%);
+            --shadow-card: 0 24px 60px rgba(0, 0, 0, 0.35);
+            --shadow-button: 0 14px 28px rgba(255, 69, 58, 0.2);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+            color: var(--text-primary);
+            background:
+                radial-gradient(circle at 15% 15%, rgba(255, 159, 10, 0.15), transparent 28%),
+                radial-gradient(circle at 85% 20%, rgba(255, 69, 58, 0.18), transparent 34%),
+                linear-gradient(180deg, #060606 0%, #121212 55%, #090909 100%);
+            padding: 24px 16px 40px;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .shell {
+            width: min(100%, 520px);
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .glow {
+            position: absolute;
+            inset: -32px -24px auto;
+            height: 220px;
+            background: var(--gradient-glow);
+            pointer-events: none;
+            filter: blur(12px);
+        }
+
+        .card {
+            position: relative;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 28px;
+            padding: 28px 20px 24px;
+            box-shadow: var(--shadow-card);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 20%);
+            pointer-events: none;
+        }
+
+        .brand {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 14px;
+            margin-bottom: 26px;
+        }
+
+        .brand img {
+            width: 82px;
+            height: 82px;
+            border-radius: 20px;
+            box-shadow: 0 18px 42px rgba(0, 0, 0, 0.35);
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 12px;
+            border-radius: 999px;
+            background: rgba(255, 69, 58, 0.1);
+            border: 1px solid rgba(255, 69, 58, 0.18);
+            color: #ff8f88;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--red);
+            box-shadow: 0 0 12px rgba(255, 69, 58, 0.6);
+        }
+
+        h1 {
+            font-size: clamp(34px, 8vw, 48px);
+            line-height: 1;
+            letter-spacing: -0.04em;
+        }
+
+        h1 span {
+            display: block;
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 16px;
+            line-height: 1.65;
+            max-width: 34ch;
+        }
+
+        .source-chip {
+            display: none;
+            margin: 0 auto 18px;
+            width: fit-content;
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .links {
+            display: grid;
+            gap: 14px;
+            margin-bottom: 22px;
+        }
+
+        .link-button {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            text-decoration: none;
+            padding: 18px 18px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        }
+
+        .link-button:hover {
+            transform: translateY(-2px);
+            border-color: rgba(255, 69, 58, 0.35);
+            background: linear-gradient(180deg, rgba(255, 69, 58, 0.14), rgba(255, 255, 255, 0.04));
+            box-shadow: var(--shadow-button);
+        }
+
+        .link-button.primary {
+            background: linear-gradient(135deg, rgba(255, 69, 58, 0.95), rgba(255, 122, 24, 0.88));
+            border-color: rgba(255, 159, 10, 0.45);
+        }
+
+        .link-button.primary:hover {
+            border-color: rgba(255, 159, 10, 0.7);
+            box-shadow: 0 16px 34px rgba(255, 69, 58, 0.35);
+        }
+
+        .link-copy {
+            text-align: left;
+        }
+
+        .link-copy strong {
+            display: block;
+            font-size: 17px;
+            letter-spacing: -0.02em;
+            margin-bottom: 4px;
+        }
+
+        .link-copy span {
+            display: block;
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 13px;
+            line-height: 1.45;
+        }
+
+        .link-button:not(.primary) .link-copy span {
+            color: var(--text-secondary);
+        }
+
+        .arrow {
+            font-size: 22px;
+            line-height: 1;
+            color: rgba(255, 255, 255, 0.7);
+            flex-shrink: 0;
+        }
+
+        .proof-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+            margin-bottom: 22px;
+        }
+
+        .proof-item,
+        .resource-card,
+        .footer-card {
+            background: var(--bg-soft);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 16px;
+        }
+
+        .proof-item strong {
+            display: block;
+            font-size: 22px;
+            letter-spacing: -0.03em;
+            margin-bottom: 4px;
+        }
+
+        .proof-item span {
+            color: var(--text-secondary);
+            font-size: 13px;
+            line-height: 1.45;
+        }
+
+        .resource-card {
+            display: grid;
+            gap: 8px;
+            margin-bottom: 22px;
+        }
+
+        .resource-card h2 {
+            font-size: 17px;
+            letter-spacing: -0.02em;
+        }
+
+        .resource-card p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .resource-card ul {
+            list-style: none;
+            display: grid;
+            gap: 8px;
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+
+        .resource-card li {
+            display: flex;
+            gap: 8px;
+        }
+
+        .resource-card li::before {
+            content: "+";
+            color: var(--amber);
+            font-weight: 700;
+        }
+
+        .footer-card {
+            text-align: center;
+        }
+
+        .footer-card p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .mini-note {
+            margin-top: 16px;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 12px;
+        }
+
+        @media (min-width: 640px) {
+            body {
+                padding-top: 40px;
+                padding-bottom: 56px;
+            }
+
+            .card {
+                padding: 34px 28px 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="shell">
+        <div class="glow"></div>
+        <main class="card">
+            <div id="source-chip" class="source-chip"></div>
+
+            <section class="brand">
+                <span class="eyebrow">China trip prep</span>
+                <img src="../assets/images/logo_1024.png" alt="ChineseGo logo">
+                <h1>ChineseGo <span>bio links</span></h1>
+                <p class="subtitle">Practical travel Chinese, fast prep resources, and direct next steps for foreigners visiting China.</p>
+            </section>
+
+            <section class="links">
+                <a class="link-button primary tracked-link" data-path="https://apps.apple.com/us/app/chinesego-travel-chinese/id6758551531" data-label="download_app" href="https://apps.apple.com/us/app/chinesego-travel-chinese/id6758551531" target="_blank" rel="noopener">
+                    <div class="link-copy">
+                        <strong>Download the App</strong>
+                        <span>450+ travel phrases with audio and offline access.</span>
+                    </div>
+                    <span class="arrow">+</span>
+                </a>
+
+                <a class="link-button tracked-link" data-path="../checklist/" data-label="free_checklist" href="../checklist/">
+                    <div class="link-copy">
+                        <strong>Get the Free China Arrival Checklist</strong>
+                        <span>First 24 hours prep for transport, hotel, apps, and key phrases.</span>
+                    </div>
+                    <span class="arrow">+</span>
+                </a>
+
+                <a class="link-button tracked-link" data-path="../" data-label="main_site" href="../">
+                    <div class="link-copy">
+                        <strong>Learn a Phrase for Today</strong>
+                        <span>Jump back to the main site and start with a useful travel phrase.</span>
+                    </div>
+                    <span class="arrow">+</span>
+                </a>
+
+                <a class="link-button tracked-link" data-path="../support.html" data-label="contact_support" href="../support.html">
+                    <div class="link-copy">
+                        <strong>Need Extra Help?</strong>
+                        <span>Contact support for questions, feedback, or concierge-style help.</span>
+                    </div>
+                    <span class="arrow">+</span>
+                </a>
+            </section>
+
+            <section class="proof-grid" aria-label="Trust points">
+                <div class="proof-item">
+                    <strong>450+</strong>
+                    <span>travel phrases built for real situations</span>
+                </div>
+                <div class="proof-item">
+                    <strong>10</strong>
+                    <span>core scenarios like hotel, taxi, food, and emergencies</span>
+                </div>
+                <div class="proof-item">
+                    <strong>Offline</strong>
+                    <span>keep key phrases ready when signal is weak</span>
+                </div>
+                <div class="proof-item">
+                    <strong>Fast</strong>
+                    <span>prep before the trip instead of learning everything</span>
+                </div>
+            </section>
+
+            <section class="resource-card">
+                <h2>Start with the part that removes the most friction</h2>
+                <p>If this is your first China trip, do not try to learn broad Mandarin. Prepare the exact phrases and decisions that matter first.</p>
+                <ul>
+                    <li>airport arrival and hotel check-in</li>
+                    <li>taxi, subway, and direction help</li>
+                    <li>restaurant ordering and shopping basics</li>
+                    <li>simple fallback phrases when you feel stuck</li>
+                </ul>
+            </section>
+
+            <section class="footer-card">
+                <p>Built for first-time visitors who want less confusion and more confidence in China.</p>
+                <div class="footer-links">
+                    <a href="../">Main site</a>
+                    <a href="../privacy.html">Privacy</a>
+                    <a href="../terms.html">Terms</a>
+                    <a href="../support.html">Support</a>
+                </div>
+            </section>
+        </main>
+        <p class="mini-note">Tip: use this page as the one bio link on Instagram, TikTok, or Threads. Add <code>?src=instagram</code>, <code>?src=tiktok</code>, or <code>?src=threads</code> to track source-specific clicks.</p>
+    </div>
+
+    <script>
+        (function () {
+            var params = new URLSearchParams(window.location.search);
+            var source = params.get("src") || "bio";
+            var chip = document.getElementById("source-chip");
+
+            if (params.get("src")) {
+                chip.textContent = source + " visitor";
+                chip.style.display = "inline-flex";
+            }
+
+            document.querySelectorAll(".tracked-link").forEach(function (link) {
+                var raw = link.getAttribute("data-path");
+                if (!raw) return;
+
+                var url = new URL(raw, window.location.href);
+                url.searchParams.set("utm_source", source);
+                url.searchParams.set("utm_medium", "bio");
+                url.searchParams.set("utm_campaign", "link_in_bio");
+
+                var label = link.getAttribute("data-label");
+                if (label) {
+                    url.searchParams.set("utm_content", label);
+                }
+
+                link.setAttribute("href", url.toString());
+            });
+        }());
+    </script>
+</body>
+</html>
